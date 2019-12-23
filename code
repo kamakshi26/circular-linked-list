@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *start=NULL;
+void create();
+void insertbeg();
+void display();
+int main()
+{   
+    int num;
+     printf("\n 1.Creation \n 2.Insertion at beginning \n 3.Insertion at remaining");
+    printf("\n4.Deletion at beginning \n5.Deletion at remaining \n6.traverse");
+    printf("\n7.Search\n8.sort\n9.update\n10.Exit\n11.display\n");
+    while(1)
+    {
+    printf("enter choice:\n");
+    scanf("%d",&num);
+    switch(num)
+        {
+        case 1:
+            create(); 
+            break;
+        case 2:
+            insertbeg(); 
+            break;
+        case 11:
+            display(); 
+            break;
+        default:
+            exit(0);
+        }
+    }
+}
+ void create()
+ {
+     struct node*temp,*ptr;
+     temp=(struct node*)malloc(sizeof(struct node));
+     printf("enter data:\n");
+     scanf("%d",&temp->data);
+     if(start==NULL)
+     {
+         start=temp;
+         start->next=start;
+     }
+     else
+     {
+         ptr=start;
+         while(ptr->next!=start)
+         {
+             ptr=ptr->next;
+         }
+         ptr->next=temp;
+         temp->next=start;
+     }
+}
+void display()
+{   
+    struct node*temp=start;
+    if(start==NULL)
+    {
+        printf("no list\n");
+    }
+    else
+    {   printf("elements are:\n");
+        while(temp->next!=start)
+        {   
+            printf("%d->",temp->data);
+            temp=temp->next;
+        }
+        printf("%d->",temp->data);printf("\n");
+    }
+} 
+void insertbeg()
+{
+    struct node*temp,*ptr;
+    temp=(struct node*)malloc(sizeof(struct node));
+    printf("enter data that you want to insert at the beginning:\n");
+    scanf("%d",&temp->data);
+    if(start==NULL)
+    {
+        start=temp;
+        start->next=start;
+    }
+    else
+    {
+        ptr=start;
+        while(ptr->next!=start)
+        {
+            ptr=ptr->next;
+        }
+        ptr->next=temp;
+        temp->next=start;
+        start=temp;
+    }
+}
+
+    
+    
+    
+    
+    
+    
+    
+
